@@ -31,7 +31,7 @@ app.get('/api', (req, res) => {
     res.send({data: process.env.REACT_APP_GOOGLE_API_TOKEN});
 });
 
-const PORT = process.env.REACT_APP_PORT || 5000;
+const PORT = process.env.PORT || 5000;
 
 mongoose.connect(process.env.REACT_APP_CONNECTION_URL, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => app.listen(PORT, () => console.log(`Server running on port: ${PORT}`)))
