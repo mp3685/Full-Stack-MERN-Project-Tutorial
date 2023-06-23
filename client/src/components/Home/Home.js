@@ -9,16 +9,18 @@ import Form from '../Form/Form';
 import useStyles from './styles';
 import { useLocation } from 'react-router-dom';
 
+import * as api from '../../api/index.js';
 
 const Home = () => {
     const [currentId, setCurrentId] = useState(0);
     const classes = useStyles();
     const dispatch = useDispatch();
     const location = useLocation();
+    const data = api.fetchPosts();
 
     useEffect(() => {
         dispatch(getPosts());
-    }, [currentId, dispatch]);
+    }, [currentId, dispatch, data]);
     
     return (
         // <div>

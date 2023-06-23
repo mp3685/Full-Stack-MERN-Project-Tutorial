@@ -1,5 +1,4 @@
 .env
-MongoDB_Login.txt
 build/
 client/node_modules/
 server/node_modules/
