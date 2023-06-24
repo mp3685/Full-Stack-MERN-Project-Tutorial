@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Container, Grow, Grid } from '@material-ui/core';
 import { useDispatch } from 'react-redux';
 import { getPosts } from '../../actions/posts';
+import { getGoogleAPI } from '../../actions/api';
 
 import Posts from '../Posts/Posts';
 import Form from '../Form/Form';
@@ -20,6 +21,7 @@ const Home = () => {
 
     useEffect(() => {
         dispatch(getPosts());
+        dispatch(getGoogleAPI());
     }, [currentId, dispatch, data]);
     
     return (
