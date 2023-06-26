@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Container } from '@material-ui/core';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { GoogleOAuthProvider } from '@react-oauth/google';
@@ -7,23 +7,9 @@ import Navbar from './components/Navbar/Navbar';
 import Home from './components/Home/Home';
 import Auth from './components/Auth/Auth';
 
-import { useSelector } from 'react-redux';
-
-// import { fetchGoogleAPI } from './api/index.js';
-
-// const data = await fetchGoogleAPI();
-// const googleAPIKey = data.data.data;
-
-const App = () => {
-    const [googleAPIKey, setGoogleAPIKey] = useState(null);
-    const apiKey = useSelector((state) => state);
-
-    useEffect(() => {
-        if (apiKey) setGoogleAPIKey(apiKey?.api?.data);
-    }, [apiKey]);
-
+const App = (googleAPIKey) => {
     return (
-        <GoogleOAuthProvider clientId={`${googleAPIKey}`}>
+        <GoogleOAuthProvider clientId={`${googleAPIKey.api}`}>
             <BrowserRouter>
                 <Container maxwidth="lg">
                     <Navbar />

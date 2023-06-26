@@ -11,9 +11,14 @@ import reducers from './reducers';
 import App from './App';
 import './index.css';
 
+import { fetchGoogleAPI } from './api/index.js';
+
 const store = configureStore({ reducer: reducers }, compose(applyMiddleware(thunk)));
 
 const root = ReactDOMClient.createRoot(document.getElementById('root'));
+
+const data = await fetchGoogleAPI();
+const googleAPIKey = data.data.data;
 
 // ReactDOM.render(
 //     <Provider store={store}>
@@ -23,6 +28,6 @@ const root = ReactDOMClient.createRoot(document.getElementById('root'));
 // );
 root.render(
     <Provider store={store}>
-        <App />
+        <App api={ googleAPIKey }/>
     </Provider>
 );
